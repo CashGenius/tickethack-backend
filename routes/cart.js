@@ -11,7 +11,8 @@ router.post('/addToCart', function(req, res, next) {
   const trip = req.body.trip
   const hour = req.body.hour
   const price = req.body.price
-  const date = req.body.date
+  let date = req.body.date
+  date = moment(date, "YYYY-MM-DD").toISOString();
   const tripToAdd = new Item({
     trip: trip,
 	hour: hour,

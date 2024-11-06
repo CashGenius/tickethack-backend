@@ -36,7 +36,7 @@ router.post('/findTrips', function(req, res, next) {
             if (result.length > 0){
                 res.json({trips : result})
             } else {
-                res.json({ressult : false, error: "No trip found"})
+                res.json({result : false, error: "No trip found", trips:[]})
             }
         })
     } else {
