@@ -17,7 +17,7 @@ router.get('/displayAllTrips', function(req, res, next) {
 router.get('/findTrips', function(req, res, next) {
     const departure = req.body.departure
     const arrival = req.body.arrival
-    let date = moment(req.body.date).format('DD-MM-YYYY')
+    let date = req.body.datemoment(originalDate).format('DD-MM-YYYY')
     if (date !== "" && date !== undefined && date !== null){
         date = moment(req.body.date,'DD-MM-YYYY').format('L')
     } else {
