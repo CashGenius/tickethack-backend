@@ -3,6 +3,7 @@ var router = express.Router();
 
 const Item = require('../models/cart');
 const Booking = require('../models/bookings')
+const moment = require('moment')
 
 // Ajouter un voyage dans la base de donnée panier
 
@@ -10,13 +11,14 @@ router.post('/addToCart', function(req, res, next) {
   const trip = req.body.trip
   const hour = req.body.hour
   const price = req.body.price
-  const date = req.body.date
+  const date = moment(req.body.date, 'DD-MM-YYYY').utc().toDate()
   const tripToAdd = new Item({
     trip: trip,
 	hour: hour,
 	price: price,
     date: date,
   })
+  console.log(trip, hour, price, date)
   tripToAdd.save()
   .then(res.json({result: true, message:"Item ajouté au panier"}))
 });
