@@ -17,9 +17,10 @@ router.get('/displayAllTrips', function(req, res, next) {
 router.get('/findTrips', function(req, res, next) {
     const departure = req.body.departure
     const arrival = req.body.arrival
-    let date = req.body.datemoment(originalDate).format('DD-MM-YYYY')
+    let date = req.body.date
+    console.log(date)
     if (date !== "" && date !== undefined && date !== null){
-        date = moment(req.body.date,'DD-MM-YYYY').format('L')
+        date = moment(req.body.date,'YYYY-MM-DD').format('L')
     } else {
         return res.json({result: false, error: "Missing date"})
     }
